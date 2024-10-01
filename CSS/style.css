@@ -1,0 +1,377 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/*Title Bar*/
+header .title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+}
+
+header .logo {
+    color: white;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+header nav a {
+    color: white;
+   text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    background-color: white;
+    color: #ff6f61;
+    border-radius: 5px;
+    
+
+}
+
+/* Help Section - Donation box*/
+.help-section {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.help-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.donation {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 305px;
+}
+
+.donation h2 {
+    margin-bottom: 10px;
+}
+
+.donation .amounts button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.donation .amounts button:hover,
+.donate-btn:hover {
+    background-color: white;
+    color: #ff6f61;
+}
+
+.custom-amount {
+    margin-top: 10px;
+    padding: 10px;
+    width: 93%;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+.donate-btn {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Emergency rescue form section */
+.rescue {
+    position: relative;
+    padding: 50px 0;
+    color: white;
+    text-align: center;
+    background: url('https://imgcdn.stablediffusionweb.com/2024/3/20/f969272e-1556-4c75-830c-1c59980b2232.jpg') fixed center / cover;
+}
+
+.rescue-container {
+    background-color: rgb(208, 63, 47);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 550px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+
+.rescue-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rescue-form input,
+.rescue-form select,
+.rescue-form button {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 87%; 
+    max-width: 500px;
+    border: none;
+    border-radius: 5px;
+}
+
+.rescue-form select {
+    width:100%; /*just to match other input field */
+}
+.rescue-form button {
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    width: 25%;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: large;
+}   
+
+.rescue-form button:hover {
+    background-color: white;
+    color: #000000;
+}
+
+/* Join Us and About Us Sections*/
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 25px;
+    background-color: #f9f9f9;
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+.section h2 {
+    font-size: 2em;
+    color: #ff6f61;
+    margin: 0 20px 0 0;
+    text-align: center;
+    flex: 0 0 150px;
+}
+
+.section p {
+    flex: 1;
+    margin: 0;
+    line-height: 1.5;
+    max-width: 800px;
+    text-align: left;
+}
+
+/* About Us Section wih Creators info (us) */
+.creators {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 50, 12, 0.7);
+    overflow: hidden;
+    margin: 10px;
+    width: 300px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(200, 250, 10, 0.8);
+}
+
+.card img {
+    width: 80%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.card p {
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* FOOTER */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Specific css for Join us page*/
+.join-us {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.join-us h2 {
+    font-size: 2.5em;
+    color: #ff6f61;
+    margin-bottom: 10px;
+}
+
+.join-us p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.join-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.option {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.option h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.option p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.join-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.join-link:hover {
+    background-color: #e55b50;
+}
+
+/* Specific css for Adoption pae */
+.adoption {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.adoption h2 {
+    font-size: 40px;
+    color: #ff6f61;
+    margin-bottom: 10px;
+}
+
+.adoption p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.adoption-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.pet-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pet-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.pet-card h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pet-card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.adopt-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.adopt-link:hover {
+    background-color: #e55b50;
+}
