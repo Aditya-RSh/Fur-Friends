@@ -4,10 +4,16 @@ Pet Adoption and Rescue Network Site
 File Structure to RUN:
 
 CSS
-  style.css
+
+--> style.css
+  
 js
-  script.js
+
+--> script.js
+  
 adoption.html
+
 index.html
+
 joinus.html
 
