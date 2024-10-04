@@ -11,9 +11,9 @@
         <div class="title-bar">
             <h1 class="logo">FurFriends</h1>
             <nav>
-                <a href="index.html">HOME</a>
-                <a href="joinus.html">JOIN US</a>
-                <a href="adoption.html">ADOPTION</a>
+                <a href="index.php">HOME</a>
+                <a href="joinus.php">JOIN US</a>
+                <a href="adoption.php">ADOPTION</a>
             </nav>
         </div>
     </header>
