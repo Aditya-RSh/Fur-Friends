@@ -39,7 +39,7 @@
     <section class="rescue" >
         <div class="rescue-container">
             <h2>Emergency Rescue</h2>
-            <form class="rescue-form" action ="index.php" method ="POST">
+            <form class="rescue-form" action ="index.php" method ="POST" enctype="multipart/form-data">
                 <input type="text" placeholder="Name" name ="fullname" required>
                 <input type="tel" placeholder="Phone Number" name ="number" required>
                 <input type="text" placeholder="Address of Rescue" name ="address" required>
@@ -51,31 +51,10 @@
                     <option value="bird">Bird</option>
                     <option value="snake">Snake</option>
                 </select>
-                <!-- <input type="file" accept="image/*" required> -->
-                <input type="file" accept="image/*" >
+                <input type="file" name="image" accept="image/*" required>
+                <!-- <input type="file" accept="image/*" > -->
                 <button type="submit" name ="submit">Submit</button>
-            </form>  
-            <?php
-                require_once 'config.php';
-                $fullname = @$_POST['fullname'];
-                $number = @$_POST['number'];
-                $address = @$_POST['address'];
-                $pet = @$_POST['pet'];
-                if(isset($_POST['submit'])){
-                    
-                    $stmt = $connect->prepare("INSERT INTO `rescue` (`name`, `number`, `address`, `pet`) VALUES (?, ?, ?, ?)");
-                    $stmt->bind_param("ssss", $fullname, $number, $address, $pet);
-
-                    if ($stmt->execute()) {
-                        echo "Success";
-                    } else {
-                        echo "Fail";
-                    }
-
-                    $stmt->close();
-                    $connect->close();
-                }
-            ?>          
+            </form>            
         </div>
     </section>
 
@@ -124,24 +103,38 @@
 </body>
 </html>
 
-<!-- <?php
-    require_once 'config.php';
-    $fullname = @$_POST['fullname'];
-    $number = @$_POST['number'];
-    $address = @$_POST['address'];
-    $pet = @$_POST['pet'];
-    if(isset($_POST['submit'])){
-        
-        $stmt = $connect->prepare("INSERT INTO `rescue` (`name`, `number`, `address`, `pet`) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $fullname, $number, $address, $pet);
+<?php
+// Include the database connection
+require_once 'config.php';
 
+// Check if the form is submitted
+if (isset($_POST['submit'])) {
+    // Collect form data
+    $fullname = $_POST['fullname'];
+    $number = $_POST['number'];
+    $address = $_POST['address'];
+    $pet = $_POST['pet'];
+
+    $image = $_FILES['image'];
+    $imageName = time() . "_" . basename($image['name']);
+    $imagePath = "images/" . $imageName; 
+
+    if (!file_exists('images')) {
+        mkdir('images', 0777, true);
+    }
+
+    if (move_uploaded_file($image['tmp_name'], $imagePath)) {
+        $stmt = $connect->prepare("INSERT INTO `rescue` (`name`, `number`, `address`, `pet`, `pet_images`) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $fullname, $number, $address, $pet, $imagePath);
         if ($stmt->execute()) {
-            echo "Success";
+            echo "Success: Form and image uploaded successfully!";
         } else {
-            echo "Fail";
+            echo "Database insertion failed.";
         }
 
         $stmt->close();
-        $connect->close();
+    } else {
+        echo "Failed to upload image.";
     }
-?> -->
+}
+?>
