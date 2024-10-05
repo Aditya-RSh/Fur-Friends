@@ -13,7 +13,7 @@
             <nav>
                 <a href="index.html">HOME</a>
                 <a href="joinus.html">JOIN US</a>
-                <a href="adoption.html">ADOPTION</a>
+                <a href="rescuee.html">OUR RESCUEES</a>
             </nav>
         </div>
     <section><p></p></section>

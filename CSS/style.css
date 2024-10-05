@@ -236,7 +236,7 @@ footer {
     text-align: center;
     padding: 20px;
     background-color: #f9f9f9;
-    margin-bottom: 20px;
+    margin-bottom: 0.1px;
 }
 
 .join-us h2 {
@@ -299,8 +299,182 @@ footer {
 .join-link:hover {
     background-color: #e55b50;
 }
+/* General form styling */
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-/* Specific css for Adoption pae */
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input {
+    margin-bottom: 10px;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    padding: 10px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #e55b50;
+}
+
+.btn.cancel {
+    background-color: #ccc;
+}
+
+.btn.cancel:hover {
+    background-color: #999;
+}
+
+/* Popup overlay and structure */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Popup header with styling */
+.popup-header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Popup body for form elements */
+.popup-body {
+    padding: 20px;
+}
+
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-content input {
+    padding: 10px;
+    width: 90% ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.popup-content button {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 50%; 
+    max-width: 500px;
+    border: none;
+    border-radius: 5px;
+    align-self: center;
+}
+
+
+
+/* Flexbox layout for form rows */
+.form-row {
+    display: flex;
+    gap: 20px; /* Adds space between columns */
+    margin-bottom: 10px;
+}
+
+.form-column {
+    flex: 1;
+}
+
+.gender-options {
+    display: flex;
+    align-items: left;
+    gap: 1px; /* Adds space between the radio buttons */
+}
+
+.gender-options input[type="radio"] {
+    margin-right: 10px; /* Optional: Adds space between radio and text */
+}
+
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Form styles */
+form input,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e55b50;
+}
+
+
+
+/* Show popup */
+.show-popup {
+    display: flex;
+}
+
+
+/* Specific css for Adoption paze */
 .adoption {
     padding: 20px;
     background-color: #f9f9f9;

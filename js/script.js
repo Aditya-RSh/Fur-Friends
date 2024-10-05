@@ -19,3 +19,12 @@ donateBtn.addEventListener('click', () => {
         alert('Please enter a donation amount.');
     }
 });
+
+function openPopup(popupId) {
+    document.getElementById(popupId).classList.add('show-popup');
+}
+
+function closePopup(popupId) {
+    document.getElementById(popupId).classList.remove('show-popup');
+}
+
