@@ -13,7 +13,7 @@
             <nav>
                 <a href="index.php">HOME</a>
                 <a href="joinus.php">JOIN US</a>
-                <a href="rescuee.html">OUR RESCUEES</a>
+                <a href="rescuee.php">OUR RESCUEES</a>
             </nav>
         </div>
     </header>
@@ -94,3 +94,46 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+<?php
+
+require_once 'config.php';
+
+// SQL query to retrieve all records
+$sql = "SELECT * FROM rescue";
+$result = mysqli_query($connect, $sql);
+
+// Check if records were found
+if (mysqli_num_rows($result) > 0) {
+    // Include the CSS file
+    echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>List of Persons</h1>
+    <div class="container">';
+
+    // Loop through each record and display the data
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="card">
+                <img src="' . htmlspecialchars($row['pet_images']) . '" alt="Image of ' . htmlspecialchars($row['name']) . '">
+                <h2>' . htmlspecialchars($row['name']) . '</h2>
+                <p><strong>Address:</strong> ' . htmlspecialchars($row['address']) . '</p>
+                <p><strong>Phone Number:</strong> ' . htmlspecialchars($row['pet']) . '</p>
+              </div>';
+    }
+
+    echo '</div>
+</body>
+</html>';
+} else {
+    echo "No records found.";
+}
+
+// Close the database connection
+mysqli_close($connect);
+?>
