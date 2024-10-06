@@ -106,7 +106,7 @@
         </div>
         <div class="popup-body">
             <p>Collaborate to provide care to rescued animals.</p>
-            <form>
+            <form action="hos_BD.php" method = "POST">
                 <label for="hospitalName">Hospital Name:</label><br>
                 <input type="text" id="hospitalName" name="hospitalName" placeholder="Hospital Name" required>
 
@@ -219,7 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Close the database connection
-    mysqli_close($conn);
+    mysqli_close($connect);
 
 } else {
     // If the form wasn't submitted, redirect back to the form
