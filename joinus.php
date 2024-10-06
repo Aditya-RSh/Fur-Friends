@@ -57,7 +57,7 @@
         </div>
         <div class="popup-body">
             <p>Help us in making a difference in the lives of animals.</p>
-            <form>
+            <form action="joinus.php" method = "POST">
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" name="name" placeholder="Full Name" required>
 
@@ -134,3 +134,96 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+
+<?php
+
+require_once 'config.php';
+// Check if the form is submitted via POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Retrieve and sanitize form inputs
+    $name   = htmlspecialchars(trim($_POST['name']));
+    $number = htmlspecialchars(trim($_POST['number']));
+    $city   = htmlspecialchars(trim($_POST['city']));
+    $state  = htmlspecialchars(trim($_POST['state']));
+    $gender = isset($_POST['gender']) ? htmlspecialchars(trim($_POST['gender'])) : '';
+    $age    = htmlspecialchars(trim($_POST['age']));
+
+    // Validate required fields
+    $errors = [];
+
+    if (empty($name)) {
+        $errors[] = "Full Name is required.";
+    }
+    if (empty($number)) {
+        $errors[] = "Contact Number is required.";
+    }
+    if (empty($city)) {
+        $errors[] = "City is required.";
+    }
+    if (empty($state)) {
+        $errors[] = "State is required.";
+    }
+    if (empty($gender)) {
+        $errors[] = "Gender is required.";
+    }
+    if (empty($age)) {
+        $errors[] = "Age is required.";
+    } elseif (!filter_var($age, FILTER_VALIDATE_INT)) {
+        $errors[] = "Age must be a valid number.";
+    }
+
+    // If there are errors, display them
+    if (!empty($errors)) {
+        echo "<h3>Please correct the following errors:</h3>";
+        echo "<ul>";
+        foreach ($errors as $error) {
+            echo "<li>" . $error . "</li>";
+        }
+        echo "</ul>";
+        echo "<a href='javascript:history.back()'>Go Back</a>";
+    } else {
+        // Prepare an SQL statement to insert the data into the database
+        $sql = "INSERT INTO `join_us` (`name`, `number`, `city`, `state`, `gender`, `age`) VALUES (?, ?, ?, ?, ?, ?)";
+
+        // Initialize a statement and prepare the SQL query
+        $stmt = mysqli_prepare($connect, $sql);
+
+        // Check if the statement was prepared successfully
+        if ($stmt === false) {
+            die("Error preparing the SQL statement: " . mysqli_error($conn));
+        }
+
+        // Bind the parameters to the SQL query
+        mysqli_stmt_bind_param($stmt, "sssssi", $name, $number, $city, $state, $gender, $age);
+
+        // Execute the statement
+        if (mysqli_stmt_execute($stmt)) {
+            // Success message
+            echo "<h2>Thank you for your submission, $name!</h2>";
+            echo "<h3>Your Details:</h3>";
+            echo "<p><strong>Full Name:</strong> $name</p>";
+            echo "<p><strong>Contact Number:</strong> $number</p>";
+            echo "<p><strong>City:</strong> $city</p>";
+            echo "<p><strong>State:</strong> $state</p>";
+            echo "<p><strong>Gender:</strong> $gender</p>";
+            echo "<p><strong>Age:</strong> $age</p>";
+        } else {
+            // Error message
+            echo "Error: " . mysqli_stmt_error($stmt);
+        }
+
+        // Close the prepared statement
+        mysqli_stmt_close($stmt);
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+
+} else {
+    // If the form wasn't submitted, redirect back to the form
+    header("Location: your_form_page.html"); // Replace with your actual form page
+    exit();
+}
+?>
